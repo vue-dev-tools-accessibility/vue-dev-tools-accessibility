@@ -18,7 +18,7 @@ import axe from 'axe-core';
 
 const isProd = import.meta.env.PROD;
 
-let childIframeUrl = 'http://localhost:5174/v0';
+let childIframeUrl = 'http://localhost:5500/v0';
 if (isProd) {
   childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
 }
@@ -47,7 +47,7 @@ function addIframeTab () {
    *
    * @type {String}
    */
-  const icon = 'accessibility-new';
+  const icon = 'https://vue-dev-tools-accessibility.github.io/logo.svg';
 
   /**
    * After clicking the tab, it renders an embedded iframe.
@@ -72,7 +72,7 @@ function addIframeTab () {
    * Determines which group to place the tab in, in the sidebar.
    * @type {'pinned'|'app'|'modules'|'advanced'}
    */
-  const category = 'app';
+  const category = 'modules';
 
   /**
    * Adds a tab in the sidebar of the Vite-Vue-Dev-Tools.
