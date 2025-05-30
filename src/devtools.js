@@ -16,11 +16,11 @@ import {
 } from '@vue/devtools-api';
 import axe from 'axe-core';
 
-const isProd = import.meta.env.PROD;
+const isDev = import.meta.env.VDT_A11Y === 'local';
 
-let childIframeUrl = 'http://localhost:5500/v0';
-if (isProd) {
-  childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
+let childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
+if (isDev) {
+  childIframeUrl = 'http://localhost:5500/v0';
 }
 
 /**
