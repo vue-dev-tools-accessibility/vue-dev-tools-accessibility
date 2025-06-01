@@ -122,7 +122,6 @@ function sendToChild (win, data) {
  * @param {object} win  The DevTools iframe window object
  */
 function runAxe (win) {
-  console.log(window.document.body);
   axe
     .run(window.document)
     .then(({ violations }) => {
@@ -144,7 +143,6 @@ function sendTheme (win, currentTheme) {
   const storageKey = '__vue-devtools-theme__';
   const theme = window.localStorage.getItem(storageKey);
   if (theme !== currentTheme) {
-    console.log('theme sent');
     sendToChild(win, { theme });
   }
 }
@@ -172,9 +170,6 @@ function watchTheme (win) {
 function listenToChild (win) {
   function displayMessage ($event) {
     const data = $event.message || $event.data;
-    if (typeof(data) !== 'string') {
-      console.log({ childRequested: data });
-    }
     const actionsMap = {
       runAxe,
       sendTheme
