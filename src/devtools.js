@@ -16,7 +16,7 @@ import {
 } from '@vue/devtools-api';
 import axe from 'axe-core';
 
-const isDev = import.meta.env.VDT_A11Y === 'local';
+const isDev = import.meta.env.VITE_A11Y === 'local';
 
 let childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
 if (isDev) {
@@ -133,7 +133,6 @@ function runAxe (win) {
     });
 }
 
-let localTheme = '';
 /**
  * Checks the value in local storage of the Vue-DevTools
  * light/dark mode theme, and if it changed, sends it to
@@ -141,11 +140,11 @@ let localTheme = '';
  *
  * @param {object} win  The DevTools iframe window object
  */
-function sendTheme (win) {
+function sendTheme (win, currentTheme) {
   const storageKey = '__vue-devtools-theme__';
   const theme = window.localStorage.getItem(storageKey);
-  if (theme !== localTheme) {
-    localTheme = theme;
+  if (theme !== currentTheme) {
+    console.log('theme sent');
     sendToChild(win, { theme });
   }
 }
@@ -173,12 +172,15 @@ function watchTheme (win) {
 function listenToChild (win) {
   function displayMessage ($event) {
     const data = $event.message || $event.data;
+    if (typeof(data) !== 'string') {
+      console.log({ childRequested: data });
+    }
     const actionsMap = {
       runAxe,
       sendTheme
     };
     if (actionsMap[data?.action]) {
-      actionsMap[data.action](win);
+      actionsMap[data.action](win, data?.data);
     }
   }
   if (win.addEventListener) {
