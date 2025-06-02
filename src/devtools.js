@@ -14,7 +14,6 @@ import {
   addCustomTab,
   onDevToolsClientConnected
 } from '@vue/devtools-api';
-import axe from 'axe-core';
 
 const isDev = import.meta.env.VITE_A11Y === 'local';
 
@@ -122,7 +121,7 @@ function sendToChild (win, data) {
  * @param {object} win  The DevTools iframe window object
  */
 function runAxe (win) {
-  axe
+  window.axe
     .run(window.document)
     .then(({ violations }) => {
       sendToChild(win, { violations });

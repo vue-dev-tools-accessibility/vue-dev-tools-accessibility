@@ -17,14 +17,18 @@
   * Go to https://github.com/vue-dev-tools-accessibility/v0 and follow the "Running Locally" guide for that repo.
 1. In another repo (any Vue 3 app that has the Vite-Vue-DevTools plugin installed), locally import this plugin from this repo:
     ```js
-    // main.js
-    import { createApp } from 'vue';
-    import vueDevToolsAccesibility from '../../vue-dev-tools-accessibility/index.js';
+    // vite.config.js
+    import vue from '@vitejs/plugin-vue';
+    import { defineConfig } from 'vite';
+    import vueDevTools from 'vite-plugin-vue-devtools';
+    import vueDevToolsAccessibility from '../vue-dev-tools-accessibility/index.js';
 
-    import App from '@/App.vue';
-
-    const app = createApp(App);
-    app.use(vueDevToolsAccesibility);
-    app.mount('#app');
+    export default defineConfig({
+      plugins: [
+        vue(),
+        vueDevTools(),
+        vueDevToolsAccessibility()
+      ]
+    });
     ```
 1. Run that Vue app to test the library there.
