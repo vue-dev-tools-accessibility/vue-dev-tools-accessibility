@@ -1,4 +1,3 @@
-/* eslint-disable-next-line import/namespace,import/no-deprecated */
 import { setupDevtools } from '@/devtools.js';
 
 describe('DevTools', () => {

@@ -1,11 +1,13 @@
 import plugin from '../../index.js';
 
 describe('Library', () => {
-  test('Has Vue Plugin shape', () => {
-    expect(Object.keys(plugin))
-      .toEqual(['install']);
+  test('Has Vite Plugin shape', () => {
+    const Plugin = plugin();
 
-    expect(typeof(plugin.install))
+    expect(Object.keys(Plugin))
+      .toEqual(['name', 'transformIndexHtml']);
+
+    expect(typeof(Plugin.transformIndexHtml))
       .toEqual('function');
   });
 });

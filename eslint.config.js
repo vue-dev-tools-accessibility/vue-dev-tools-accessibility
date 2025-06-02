@@ -24,6 +24,7 @@ export default [
 
   {
     languageOptions: {
+      ecmaVersion: 2025,
       globals: {
         ...globals.browser,
         vi: true
@@ -31,8 +32,6 @@ export default [
     },
     rules: {
       'import/no-anonymous-default-export': 'off',
-      'import/no-namespace': 'off',
-      'import/no-unresolved': 'off',
       'import/no-unused-modules': 'off',
 
       // If this is not turned off, linting throws because it can't find 'jest' install
