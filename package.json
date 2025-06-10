@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "scripts": {
     "test": "cross-env TZ=America/New_York vitest run --coverage",
@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.13.0",
     "globals": "^16.2.0",
+    "happy-dom": "^17.6.3",
     "vite": "^6.2.5",
     "vitest": "^3.2.3"
   },
