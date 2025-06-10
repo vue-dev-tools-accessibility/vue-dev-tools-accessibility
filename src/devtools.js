@@ -22,11 +22,16 @@ if (isDev) {
   childIframeUrl = 'http://localhost:5500/v0';
 }
 
+const OUTLINE_CLASS = 'vue-dev-tools-accessibility-outline';
+
 /**
- * This is the tab title shown in the sidebar.
+ * The name of a Material Design Icon, Iconify Ic Baseline icon, or a URL to an SVG.
+ * https://fonts.google.com/icons
+ * https://icones.netlify.app/collection/ic?variant=Baseline
+ *
  * @type {String}
  */
-const title = 'Accessibility';
+const icon = 'https://vue-dev-tools-accessibility.github.io/logo.svg';
 
 /**
  * This adds the plugin to the sidebar of Vue-DevTools
@@ -40,13 +45,10 @@ function addIframeTab () {
   const name = 'vue-accessibility';
 
   /**
-   * The name of a Material Design Icon, Iconify Ic Baseline icon, or a URL to an SVG.
-   * https://fonts.google.com/icons
-   * https://icones.netlify.app/collection/ic?variant=Baseline
-   *
+   * This is the tab title shown in the sidebar.
    * @type {String}
    */
-  const icon = 'https://vue-dev-tools-accessibility.github.io/logo.svg';
+  const title = 'Accessibility';
 
   /**
    * After clicking the tab, it renders an embedded iframe.
@@ -92,8 +94,8 @@ function addIframeTab () {
  * @return {Boolean}      true = Accessibility tab is selected and iframe is loaded
  */
 function isTabSelected (win) {
-  let selectedTab = win.document.querySelector('.router-link-active');
-  if (selectedTab?.innerText === title) {
+  let selectedTabIcon = win.document.querySelector('.router-link-active img');
+  if (selectedTabIcon?.src === icon) {
     return true;
   }
   return false;
@@ -113,6 +115,52 @@ function sendToChild (win, data) {
   }
 }
 
+/**
+ * Adds a style block to the page with an outline class.
+ */
+function createOutlineClass () {
+  const STYLE_ID = 'vue-dev-tools-accessibility-style';
+  if (!document.getElementById(STYLE_ID)) {
+    const styleElement = document.createElement('style');
+    styleElement.id = STYLE_ID;
+    styleElement.innerHTML = '.' + OUTLINE_CLASS + '{ outline: 4px solid #F00; }';
+    document.body.appendChild(styleElement);
+  }
+}
+
+/**
+ * Remove the highlight class globally.
+ */
+function clearHighlights () {
+  const allOutlinedElements = Array.from(document.querySelectorAll('.' + OUTLINE_CLASS));
+  allOutlinedElements.forEach((element) => {
+    element.classList.remove(OUTLINE_CLASS);
+  });
+}
+
+/**
+ * Highlights a DOM node on the page and scrolls to it.
+ *
+ * @param  {object} win     The DevTools iframe window object
+ * @param  {string} target  The CSS Selector to highlight
+ */
+function highlightTarget (win, target) {
+  createOutlineClass();
+  const targetElement = document.querySelector(target);
+  if (targetElement.classList.contains(OUTLINE_CLASS)) {
+    targetElement.classList.remove(OUTLINE_CLASS);
+  } else {
+    clearHighlights();
+    targetElement.classList.add(OUTLINE_CLASS);
+    targetElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
+    });
+  }
+}
+
+let axeRunning = false;
 
 /**
  * Runs Axe, the accessibility tool. It scans the full
@@ -121,6 +169,11 @@ function sendToChild (win, data) {
  * @param {object} win  The DevTools iframe window object
  */
 function runAxe (win) {
+  if (axeRunning) {
+    return;
+  }
+  axeRunning = true;
+  sendToChild(win, { axeLoading: true });
   window.axe
     .run(window.document)
     .then(({ violations }) => {
@@ -128,6 +181,10 @@ function runAxe (win) {
     })
     .catch((error) => {
       sendToChild(win, { error });
+    })
+    .finally(() => {
+      clearHighlights();
+      axeRunning = false;
     });
 }
 
@@ -170,6 +227,7 @@ function listenToChild (win) {
   function displayMessage ($event) {
     const data = $event.message || $event.data;
     const actionsMap = {
+      highlightTarget,
       runAxe,
       sendTheme
     };
