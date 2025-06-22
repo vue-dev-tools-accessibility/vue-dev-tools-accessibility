@@ -111,7 +111,7 @@ function sendToChild (win, data) {
   if (isTabSelected(win)) {
     const innerIframe = win.document.querySelector('iframe[src="' + childIframeUrl + '"]');
     const innerIframeWin = innerIframe.contentWindow;
-    innerIframeWin.postMessage(data, '*');
+    innerIframeWin.postMessage(data, childIframeUrl);
   }
 }
 
@@ -188,6 +188,11 @@ function runAxe (win) {
     });
 }
 
+function sendVersions (win) {
+  sendToChild(win, { axeVersion: window.axe?.version });
+  sendToChild(win, { vdtaVersion: 'v0.0.9' });
+}
+
 /**
  * Checks the value in local storage of the Vue-DevTools
  * light/dark mode theme, and if it changed, sends it to
@@ -229,7 +234,8 @@ function listenToChild (win) {
     const actionsMap = {
       highlightTarget,
       runAxe,
-      sendTheme
+      sendTheme,
+      sendVersions
     };
     if (actionsMap[data?.action]) {
       actionsMap[data.action](win, data?.data);
