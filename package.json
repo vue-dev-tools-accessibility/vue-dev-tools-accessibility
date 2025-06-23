@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "test": "cross-env TZ=America/New_York vitest run --coverage",
@@ -13,11 +13,12 @@
   },
   "dependencies": {
     "@vue/devtools-api": "^7.7.7",
-    "axe-core": "^4.10.3"
+    "axe-core": "^4.10.3",
+    "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
-    "@stylistic/eslint-plugin": "^4.4.1",
+    "@stylistic/eslint-plugin": "^5.0.0",
     "@vitest/coverage-v8": "^3.2.4",
     "cross-env": "^7.0.3",
     "eslint": "^9.29.0",
