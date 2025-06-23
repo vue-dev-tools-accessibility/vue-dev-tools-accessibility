@@ -14,7 +14,7 @@ import {
   addCustomTab,
   onDevToolsClientConnected
 } from '@vue/devtools-api';
-import _debounce from 'lodash.debounce';
+import { debounce as _debounce } from 'lodash-es';
 
 const isDev = import.meta.env.VITE_A11Y === 'local';
 
@@ -197,7 +197,7 @@ function runAxe (win) {
 function sendVersions (win) {
   sendToChild(win, { axeVersion: window.axe?.version });
   // The next line is updated automatically by postbump.
-  sendToChild(win, { vdtaVersion: 'v0.1.0' });
+  sendToChild(win, { vdtaVersion: 'v0.1.1' });
 }
 
 let domObserver = undefined;

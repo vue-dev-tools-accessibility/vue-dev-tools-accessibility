@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "test": "cross-env TZ=America/New_York vitest run --coverage",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@vue/devtools-api": "^7.7.7",
     "axe-core": "^4.10.3",
-    "lodash.debounce": "^4.0.8"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
