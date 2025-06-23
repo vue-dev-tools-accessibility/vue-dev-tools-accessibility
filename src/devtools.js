@@ -14,6 +14,7 @@ import {
   addCustomTab,
   onDevToolsClientConnected
 } from '@vue/devtools-api';
+import _debounce from 'lodash.debounce';
 
 const isDev = import.meta.env.VITE_A11Y === 'local';
 
@@ -188,9 +189,51 @@ function runAxe (win) {
     });
 }
 
+/**
+ * Send the library and Axe version numbers to the child.
+ *
+ * @param {object} win  The DevTools iframe window object
+ */
 function sendVersions (win) {
   sendToChild(win, { axeVersion: window.axe?.version });
-  sendToChild(win, { vdtaVersion: 'v0.0.9' });
+  // The next line is updated automatically by postbump.
+  sendToChild(win, { vdtaVersion: 'v0.1.0' });
+}
+
+let domObserver = undefined;
+/**
+ * Sets up the MutatinObserver so it can be used to run
+ * Axe automatically on DOM changes.
+ *
+ * @param {object} win  The DevTools iframe window object
+ */
+function initializeDOMWatching (win) {
+  const callback = () => {
+    runAxe(win);
+  };
+  const minWait = 500;
+  const maxWait = 3000;
+  domObserver = new MutationObserver(_debounce(callback, minWait, { maxWait }));
+}
+/**
+ * Toggles running Axe automatically based on the user
+ * checking or unchecking the box in the UI.
+ *
+ * @param {object}  win      The DevTools iframe window object
+ * @param {boolean} enabled  The user's choice to watch the DOM or not
+ */
+function watchDom (win, enabled) {
+  if (enabled) {
+    const targetNode = document.querySelector('[data-v-app]');
+    const config = {
+      attributes: true,
+      childList: true,
+      subtree: true
+    };
+    domObserver.observe(targetNode, config);
+  } else {
+    domObserver.disconnect();
+  }
 }
 
 /**
@@ -235,7 +278,8 @@ function listenToChild (win) {
       highlightTarget,
       runAxe,
       sendTheme,
-      sendVersions
+      sendVersions,
+      watchDom
     };
     if (actionsMap[data?.action]) {
       actionsMap[data.action](win, data?.data);
@@ -262,5 +306,6 @@ export function setupDevtools () {
     const vueDevToolsWin = vueDevToolsFrame.contentWindow;
     listenToChild(vueDevToolsWin);
     watchTheme(vueDevToolsWin);
+    initializeDOMWatching(vueDevToolsWin);
   });
 }
