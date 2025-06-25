@@ -14,6 +14,7 @@ import {
   addCustomTab,
   onDevToolsClientConnected
 } from '@vue/devtools-api';
+// eslint-disable-next-line import/no-unresolved
 import { registerAPCACheck } from 'apca-check';
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
