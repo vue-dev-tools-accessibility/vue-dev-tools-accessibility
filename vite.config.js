@@ -5,6 +5,8 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import { configDefaults } from 'vitest/dist/config.js';
 
+const __dirname = import.meta.dirname;
+
 export default defineConfig({
   build: {
     lib: {
