@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build-dev": "cross-env VITE_A11Y=local npm run build",
+    "postbuild-dev": "node ./scripts/postbuild-dev.js",
     "prepublishOnly": "npm run build",
     "test": "cross-env TZ=America/New_York vitest run --coverage",
     "unit": "cross-env TZ=America/New_York vitest --coverage",
