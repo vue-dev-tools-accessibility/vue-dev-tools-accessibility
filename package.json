@@ -1,8 +1,10 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "npm run build",
     "test": "cross-env TZ=America/New_York vitest run --coverage",
     "unit": "cross-env TZ=America/New_York vitest --coverage",
     "lint": "eslint --ext .js,.vue src tests vite.config.js eslint.config.js",
