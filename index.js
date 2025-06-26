@@ -28,8 +28,7 @@ export default function vueDevToolsAccessibility () {
         return html.replace(
           '</body>',
           [
-            '<script src="./node_modules/axe-core/axe.js"></script>',
-            '<script type="module" src="./node_modules/vue-dev-tools-accessibility/src/runner.js"></script>',
+            '<script src="./node_modules/vue-dev-tools-accessibility/dist/vue-dev-tools-accessibility.iife.js"></script>',
             '</body>'
           ].join('\n')
         );

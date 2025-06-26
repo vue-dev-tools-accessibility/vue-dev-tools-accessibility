@@ -32,6 +32,6 @@
       ]
     });
     ```
-1. Also in that other repo, add this ENV VAR when running locally `"dev": "cross-env VITE_A11Y=local vite"`. This will have it use the localhost for the `v0` server.
+1. To have access to the `v0` localhost server, run `localStorage.setItem('VDTA_LOCAL', true);` in the console.
 1. I don't have a solution yet for how to have use the correct `devtools.js` in the browser for development. So for now I'm just editing the file in that repos node_modules and copying the results back to this repo until I can find a smoother development process. This does require deleting the `node_modules/.vite` and `node_modules/.vite-temp` folders sometimes to get it to load the changes from node_modules.
 1. Run that Vue app to test the library there.

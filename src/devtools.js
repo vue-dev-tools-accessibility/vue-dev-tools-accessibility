@@ -15,11 +15,16 @@ import {
   onDevToolsClientConnected
 } from '@vue/devtools-api';
 // eslint-disable-next-line import/no-unresolved
-import { registerAPCACheck } from 'apca-check';
+import registerAPCACheck from 'apca-check';
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
-const isDev = import.meta.env.VITE_A11Y === 'local';
+let isDev = false;
+try {
+  isDev = JSON.parse(localStorage.getItem('VDTA_LOCAL'));
+} catch {
+  console.log('VDTA: Error checking local state.');
+}
 
 let childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
 if (isDev) {
@@ -229,9 +234,9 @@ function setColorStandard (win, value) {
  * @param {object} win  The DevTools iframe window object
  */
 function sendVersions (win) {
-  sendToChild(win, { axeVersion: window.axe?.version });
+  sendToChild(win, { axeVersion: axe.version });
   // The next line is updated automatically by postbump.
-  sendToChild(win, { vdtaVersion: 'v0.2.0' });
+  sendToChild(win, { vdtaVersion: 'v0.2.1' });
 }
 
 let domObserver = undefined;
