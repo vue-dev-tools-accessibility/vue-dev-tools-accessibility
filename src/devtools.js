@@ -185,6 +185,7 @@ function runAxe (win) {
   }
   sendToChild(win, { axeLoading: true });
   axeRunning = true;
+  axe.reset();
 
   if (colorStandard) {
     registerAPCACheck(colorStandard);
