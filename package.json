@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "test": "cross-env TZ=America/New_York vitest run --coverage",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@vue/devtools-api": "^7.7.7",
+    "apca-check": "^0.1.1",
     "axe-core": "^4.10.3",
     "lodash-es": "^4.17.21"
   },
@@ -30,11 +31,11 @@
     "eslint-plugin-jest": "^29.0.1",
     "globals": "^16.2.0",
     "happy-dom": "^18.0.1",
-    "vite": "^6.2.5",
+    "vite": "^7.0.0",
     "vitest": "^3.2.4"
   },
   "volta": {
-    "node": "24.2.0",
+    "node": "24.3.0",
     "npm": "11.4.2"
   }
 }

@@ -14,6 +14,9 @@ import {
   addCustomTab,
   onDevToolsClientConnected
 } from '@vue/devtools-api';
+// eslint-disable-next-line import/no-unresolved
+import { registerAPCACheck } from 'apca-check';
+import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
 const isDev = import.meta.env.VITE_A11Y === 'local';
@@ -162,6 +165,8 @@ function highlightTarget (win, target) {
 }
 
 let axeRunning = false;
+/** @type {undefined|'bronze'|'silver'}  Color contrast settings for WCAG 2 AA (undef) or APCA (str) */
+let colorStandard = undefined;
 
 /**
  * Runs Axe, the accessibility tool. It scans the full
@@ -173,9 +178,22 @@ function runAxe (win) {
   if (axeRunning) {
     return;
   }
-  axeRunning = true;
   sendToChild(win, { axeLoading: true });
-  window.axe
+  axeRunning = true;
+
+  if (colorStandard) {
+    registerAPCACheck(colorStandard);
+    axe.configure({
+      rules: [
+        {
+          id: 'color-contrast',
+          enabled: false
+        }
+      ]
+    });
+  }
+
+  axe
     .run(window.document)
     .then(({ violations }) => {
       sendToChild(win, { violations });
@@ -190,6 +208,22 @@ function runAxe (win) {
 }
 
 /**
+ * Updates the value of the colorStandards variable based on the
+ * user's settings from the UI.
+ *
+ * @param {object} win      The DevTools iframe window object
+ * @param {string} [value]  Must be undefined, 'bronze', or 'silver'
+ */
+function setColorStandard (win, value) {
+  const apcaStandards = ['bronze', 'silver'];
+  if (apcaStandards.includes(value)) {
+    colorStandard = value;
+  } else {
+    colorStandard = undefined;
+  }
+}
+
+/**
  * Send the library and Axe version numbers to the child.
  *
  * @param {object} win  The DevTools iframe window object
@@ -197,7 +231,7 @@ function runAxe (win) {
 function sendVersions (win) {
   sendToChild(win, { axeVersion: window.axe?.version });
   // The next line is updated automatically by postbump.
-  sendToChild(win, { vdtaVersion: 'v0.1.1' });
+  sendToChild(win, { vdtaVersion: 'v0.2.0' });
 }
 
 let domObserver = undefined;
@@ -279,6 +313,7 @@ function listenToChild (win) {
       runAxe,
       sendTheme,
       sendVersions,
+      setColorStandard,
       watchDom
     };
     if (actionsMap[data?.action]) {
