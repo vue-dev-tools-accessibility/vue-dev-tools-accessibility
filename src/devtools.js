@@ -236,7 +236,7 @@ function setColorStandard (win, value) {
 function sendVersions (win) {
   sendToChild(win, { axeVersion: axe.version });
   // The next line is updated automatically by postbump.
-  sendToChild(win, { vdtaVersion: 'v0.2.1' });
+  sendToChild(win, { vdtaVersion: 'v0.2.2' });
 }
 
 let domObserver = undefined;
