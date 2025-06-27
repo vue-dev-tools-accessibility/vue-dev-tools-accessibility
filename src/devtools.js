@@ -16,10 +16,11 @@ import {
 } from '@vue/devtools-api';
 // eslint-disable-next-line import/no-unresolved
 import registerAPCACheck from 'apca-check';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import apcaManifest from 'apca-w3/package.json' with { type: 'json' };
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
-import apcaManifest from '../node_modules/apca-w3/package.json' with { type: 'json' };
 const apcaVersion = apcaManifest.version;
 
 let isDev = false;
