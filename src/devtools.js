@@ -19,6 +19,9 @@ import registerAPCACheck from 'apca-check';
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
+import apcaManifest from '../node_modules/apca-w3/package.json' with { type: 'json' };
+const apcaVersion = apcaManifest.version;
+
 let isDev = false;
 try {
   isDev = JSON.parse(localStorage.getItem('VDTA_LOCAL'));
@@ -235,6 +238,7 @@ function setColorStandard (win, value) {
  * @param {object} win  The DevTools iframe window object
  */
 function sendVersions (win) {
+  sendToChild(win, { apcaVersion });
   sendToChild(win, { axeVersion: axe.version });
   // The next line is updated automatically by postbump.
   sendToChild(win, { vdtaVersion: 'v0.2.2' });
