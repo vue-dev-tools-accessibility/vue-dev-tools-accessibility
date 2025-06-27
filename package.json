@@ -13,7 +13,8 @@
     "fix": "npm run lint -- --fix",
     "bump": "npx --yes -- @jsdevtools/version-bump-prompt && npm i",
     "postbump": "node ./scripts/postbump.js",
-    "volta": "volta pin node@latest && volta pin npm@latest && git status"
+    "volta": "volta pin node@latest && volta pin npm@latest && git status",
+    "outdated": "npm outdated"
   },
   "dependencies": {
     "@vue/devtools-api": "^7.7.7",
@@ -22,11 +23,11 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
+    "@eslint/js": "^9.30.0",
     "@stylistic/eslint-plugin": "^5.0.0",
     "@vitest/coverage-v8": "^3.2.4",
     "cross-env": "^7.0.3",
-    "eslint": "^9.29.0",
+    "eslint": "^9.30.0",
     "eslint-config-tjw-base": "^4.3.0",
     "eslint-config-tjw-import": "^2.0.0",
     "eslint-config-tjw-jest": "^3.0.0",
