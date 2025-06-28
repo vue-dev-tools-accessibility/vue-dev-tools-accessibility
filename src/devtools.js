@@ -191,10 +191,26 @@ function runAxe (win) {
   axeRunning = true;
   axe.reset();
 
-  if (colorStandard) {
+  if (colorStandard === 'aaa') {
+    axe.configure({
+      rules: [
+        // Enable AA contrast violations for colors with contrast below 4.5
+        {
+          id: 'color-contrast',
+          enabled: true
+        },
+        // Enable AAA contrast violations for colors with contrast ration between 4.5 and 7.0
+        {
+          id: 'color-contrast-enhanced',
+          enabled: true
+        }
+      ]
+    });
+  } else if (colorStandard) {
     registerAPCACheck(colorStandard);
     axe.configure({
       rules: [
+        // Disable WCAG 2 AA color contrast, since we are using APCA instead
         {
           id: 'color-contrast',
           enabled: false
@@ -222,14 +238,17 @@ function runAxe (win) {
  * user's settings from the UI.
  *
  * @param {object} win      The DevTools iframe window object
- * @param {string} [value]  Must be undefined, 'bronze', or 'silver'
+ * @param {string} [value]  Must be undefined, 'bronze', 'silver', or 'aaa'
  */
 function setColorStandard (win, value) {
-  const apcaStandards = ['bronze', 'silver'];
-  if (apcaStandards.includes(value)) {
-    colorStandard = value;
-  } else {
-    colorStandard = undefined;
+  if (colorStandard !== value) {
+    const allowed = ['aaa', 'bronze', 'silver'];
+    if (allowed.includes(value)) {
+      colorStandard = value;
+    } else {
+      colorStandard = undefined;
+    }
+    runAxe(win);
   }
 }
 

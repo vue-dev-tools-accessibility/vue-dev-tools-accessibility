@@ -1,6 +1,10 @@
+# All root files/folders should be listed, those commented
+# out are implicitly included in the npm package.
+
 .git/
 .github/
-
+# dist/
+# node_modules/
 scripts/
 src/
 tests/
@@ -10,10 +14,10 @@ tests/
 .npmignore
 CODE_OF_CONDUCT.md
 eslint.config.js
-
+# index.js
 jsconfig.json
 LICENSE
-
-
-
+# package-lock.json
+# package.json
+# README.md
 vite.config.js
