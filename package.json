@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -15,16 +15,13 @@
     "volta": "volta pin node@latest && volta pin npm@latest && git status",
     "outdated": "npm outdated"
   },
-  "dependencies": {
-    "@vue/devtools-api": "^7.7.7",
-    "apca-check": "^0.1.1",
-    "axe-core": "^4.10.3",
-    "lodash-es": "^4.17.21"
-  },
   "devDependencies": {
     "@eslint/js": "^9.30.0",
     "@stylistic/eslint-plugin": "^5.1.0",
     "@vitest/coverage-v8": "^3.2.4",
+    "@vue/devtools-api": "^7.7.7",
+    "apca-check": "^0.1.1",
+    "axe-core": "^4.10.3",
     "cross-env": "^7.0.3",
     "eslint": "^9.30.0",
     "eslint-config-tjw-base": "^4.3.0",
@@ -35,6 +32,7 @@
     "eslint-plugin-jest": "^29.0.1",
     "globals": "^16.2.0",
     "happy-dom": "^18.0.1",
+    "lodash-es": "^4.17.21",
     "vite": "^7.0.0",
     "vitest": "^3.2.4"
   },

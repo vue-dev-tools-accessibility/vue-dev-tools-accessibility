@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 
