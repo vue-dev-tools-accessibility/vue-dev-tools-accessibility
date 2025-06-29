@@ -18,9 +18,10 @@ import {
 import registerAPCACheck from 'apca-check';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import apcaManifest from 'apca-w3/package.json' with { type: 'json' };
-import manifest from '../package.json' with { type: 'json' };
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
+
+import manifest from '../package.json' with { type: 'json' };
 
 let isDev = false;
 try {
