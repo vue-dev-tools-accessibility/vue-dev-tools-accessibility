@@ -21,6 +21,10 @@ import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
 import manifest from '../package.json' with { type: 'json' };
+import {
+  clearHighlights,
+  highlightTarget
+} from './highlighter.js';
 
 let isDev = false;
 try {
@@ -33,8 +37,6 @@ let childIframeUrl = 'https://vue-dev-tools-accessibility.github.io/v0';
 if (isDev) {
   childIframeUrl = 'http://localhost:5500/v0';
 }
-
-const OUTLINE_CLASS = 'vue-dev-tools-accessibility-outline';
 
 /**
  * The name of a Material Design Icon, Iconify Ic Baseline icon, or a URL to an SVG.
@@ -124,51 +126,6 @@ function sendToChild (win, data) {
     const innerIframe = win.document.querySelector('iframe[src="' + childIframeUrl + '"]');
     const innerIframeWin = innerIframe.contentWindow;
     innerIframeWin.postMessage(data, childIframeUrl);
-  }
-}
-
-/**
- * Adds a style block to the page with an outline class.
- */
-function createOutlineClass () {
-  const STYLE_ID = 'vue-dev-tools-accessibility-style';
-  if (!document.getElementById(STYLE_ID)) {
-    const styleElement = document.createElement('style');
-    styleElement.id = STYLE_ID;
-    styleElement.innerHTML = '.' + OUTLINE_CLASS + '{ outline: 4px solid #F00; }';
-    document.body.appendChild(styleElement);
-  }
-}
-
-/**
- * Remove the highlight class globally.
- */
-function clearHighlights () {
-  const allOutlinedElements = Array.from(document.querySelectorAll('.' + OUTLINE_CLASS));
-  allOutlinedElements.forEach((element) => {
-    element.classList.remove(OUTLINE_CLASS);
-  });
-}
-
-/**
- * Highlights a DOM node on the page and scrolls to it.
- *
- * @param  {object} win     The DevTools iframe window object
- * @param  {string} target  The CSS Selector to highlight
- */
-function highlightTarget (win, target) {
-  createOutlineClass();
-  const targetElement = document.querySelector(target);
-  if (targetElement.classList.contains(OUTLINE_CLASS)) {
-    targetElement.classList.remove(OUTLINE_CLASS);
-  } else {
-    clearHighlights();
-    targetElement.classList.add(OUTLINE_CLASS);
-    targetElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center'
-    });
   }
 }
 
