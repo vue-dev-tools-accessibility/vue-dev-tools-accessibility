@@ -7,9 +7,9 @@
 
 * https://vue-dev-tools-accessibility.github.io
 
-<img alt="Arrow pointing up" height="170" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53">
-<img alt="Arrow pointing up" height="155" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53">
-<img alt="Arrow pointing up" height="141" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53">
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="170" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="155" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="141" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
 
 
 ## Running locally (plugin development)
@@ -28,6 +28,6 @@
 1. Run that Vue app to test the library there.
 1. To have access to the `v0` localhost server, run `localStorage.setItem('VDTA_LOCAL', true);` in the console and refresh the page.
 
-*How does this take into acconut update/adding new dependencies?*
+*How does this take into account updating/adding dependencies?*
 
-It doesn't! For that, you just have to `npm install` them and publish a new release of `vue-dev-tools-accessibility` and repeat step 4.
+It doesn't! For that, you just have to `npm install` them, then publish a new release of `vue-dev-tools-accessibility` and repeat step 4.
