@@ -173,7 +173,7 @@ function highlightTarget (win, target) {
 }
 
 let axeRunning = false;
-/** @type {undefined|'bronze'|'silver'}  Color contrast settings for WCAG 2 AA (undef) or APCA (str) */
+/** @type {undefined|'bronze'|'silver'|'aaa'}  Color contrast checker */
 let colorStandard = undefined;
 
 /**
@@ -218,8 +218,13 @@ function runAxe (win) {
     });
   }
 
+  // github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter
+  const options = {
+    absolutePaths: true
+  };
+
   axe
-    .run(window.document)
+    .run(window.document, options)
     .then(({ violations }) => {
       sendToChild(win, { violations });
     })
