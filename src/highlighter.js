@@ -27,7 +27,7 @@ const createHighlighterElement = function () {
     newHighlighter.id = HIGHLIGHTER_ID;
     document.body.appendChild(newHighlighter);
   }
-}
+};
 
 /**
  * Highlights a DOM node on the page and scrolls to it.
@@ -67,4 +67,4 @@ export const highlightTarget = function (win, target) {
     block: 'center',
     inline: 'center'
   });
-}
+};

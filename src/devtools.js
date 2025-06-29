@@ -21,6 +21,7 @@ import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
 import manifest from '../package.json' with { type: 'json' };
+
 import {
   clearHighlights,
   highlightTarget
