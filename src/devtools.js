@@ -22,8 +22,6 @@ import manifest from '../package.json' with { type: 'json' };
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
-const apcaVersion = apcaManifest.version;
-
 let isDev = false;
 try {
   isDev = JSON.parse(localStorage.getItem('VDTA_LOCAL'));
@@ -259,7 +257,7 @@ function setColorStandard (win, value) {
  * @param {object} win  The DevTools iframe window object
  */
 function sendVersions (win) {
-  sendToChild(win, { apcaVersion });
+  sendToChild(win, { apcaVersion: apcaManifest.version });
   sendToChild(win, { axeVersion: axe.version });
   sendToChild(win, { vdtaVersion: manifest.version });
 }
