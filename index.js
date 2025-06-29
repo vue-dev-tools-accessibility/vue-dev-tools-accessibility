@@ -25,10 +25,19 @@ export default function vueDevToolsAccessibility () {
      */
     transformIndexHtml: function (html, context) {
       if (context.server) {
+
+        let base = context.server.config?.base || '';
+        if (!base.startsWith('/')) {
+          base = '/' + base;
+        }
+        if (!base.endsWith('/')) {
+          base = base + '/';
+        }
+
         return html.replace(
           '</body>',
           [
-            '<script src="./node_modules/vue-dev-tools-accessibility/dist/vue-dev-tools-accessibility.iife.js"></script>',
+            '<script src=".' + base + 'node_modules/vue-dev-tools-accessibility/dist/vue-dev-tools-accessibility.iife.js"></script>',
             '</body>'
           ].join('\n')
         );
