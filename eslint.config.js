@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import path from 'node:path';
 
 import pluginJs from '@eslint/js';
@@ -32,6 +30,7 @@ export default [
     },
     rules: {
       'import/no-anonymous-default-export': 'off',
+      'import/no-extraneous-dependencies': 'off',
       'import/no-unused-modules': 'off',
 
       // If this is not turned off, linting throws because it can't find 'jest' install
