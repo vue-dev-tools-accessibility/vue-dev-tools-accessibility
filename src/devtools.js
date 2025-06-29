@@ -18,6 +18,7 @@ import {
 import registerAPCACheck from 'apca-check';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import apcaManifest from 'apca-w3/package.json' with { type: 'json' };
+import manifest from '../package.json' with { type: 'json' };
 import axe from 'axe-core';
 import { debounce as _debounce } from 'lodash-es';
 
@@ -260,8 +261,7 @@ function setColorStandard (win, value) {
 function sendVersions (win) {
   sendToChild(win, { apcaVersion });
   sendToChild(win, { axeVersion: axe.version });
-  // The next line is updated automatically by postbump.
-  sendToChild(win, { vdtaVersion: 'v0.2.2' });
+  sendToChild(win, { vdtaVersion: manifest.version });
 }
 
 let domObserver = undefined;

@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -12,7 +12,6 @@
     "lint": "eslint --ext .js,.vue src tests vite.config.js eslint.config.js",
     "fix": "npm run lint -- --fix",
     "bump": "npx --yes -- @jsdevtools/version-bump-prompt && npm i",
-    "postbump": "node ./scripts/postbump.js",
     "volta": "volta pin node@latest && volta pin npm@latest && git status",
     "outdated": "npm outdated"
   },
