@@ -1,7 +1,13 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js"
+    }
+  },
   "scripts": {
     "build": "vite build",
     "build-dev": "cross-env VITE_A11Y=local npm run build",
