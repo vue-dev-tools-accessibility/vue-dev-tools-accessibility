@@ -37,7 +37,7 @@ export default function vueDevToolsAccessibility () {
         return html.replace(
           '</body>',
           [
-            '<script src=".' + base + 'node_modules/vue-dev-tools-accessibility/dist/vue-dev-tools-accessibility.iife.js"></script>',
+            '<script src="' + base + 'node_modules/vue-dev-tools-accessibility/dist/vue-dev-tools-accessibility.iife.js"></script>',
             '</body>'
           ].join('\n')
         );
