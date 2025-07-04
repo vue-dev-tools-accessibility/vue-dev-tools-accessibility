@@ -1,8 +1,6 @@
 import { ALLOWED_ACTIONS, sendToChild } from './communication/sendToChild.js';
 
-const {
-  LOAD_SETTINGS
-} = ALLOWED_ACTIONS;
+const { LOAD_SETTINGS } = ALLOWED_ACTIONS;
 
 const STORAGE_KEY = 'VDTA_SETTINGS';
 
