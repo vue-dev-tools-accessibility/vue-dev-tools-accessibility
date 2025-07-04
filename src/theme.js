@@ -1,4 +1,6 @@
-import { sendToChild } from './sendToChild.js';
+import { ALLOWED_ACTIONS, sendToChild } from './communication/sendToChild.js';
+
+const { THEME } = ALLOWED_ACTIONS;
 
 /**
  * Checks the value in local storage of the Vue-DevTools
@@ -31,7 +33,7 @@ export const sendTheme = function (win, currentTheme) {
 
   // avoid unnecessary communication with child iframe
   if (theme !== currentTheme) {
-    sendToChild(win, { theme });
+    sendToChild(win, { [THEME]: theme });
   }
 };
 

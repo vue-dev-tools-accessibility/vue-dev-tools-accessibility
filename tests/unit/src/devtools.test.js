@@ -1,4 +1,4 @@
-import { setupDevtools } from '@/devtools.js';
+import { setupDevtools } from '@/devTools.js';
 
 describe('DevTools', () => {
   describe('Setup DevTools', () => {

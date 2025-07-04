@@ -1,8 +1,9 @@
-import { highlightTarget } from './highlighter.js';
-import { runAxe, setColorStandard } from './runAxe.js';
-import { sendVersions } from './sendVersions.js';
-import { sendTheme } from './theme.js';
-import { watchDom } from './watchDOM.js';
+import { highlightTarget } from '../highlighter.js';
+import { runAxe, setColorStandard } from '../runAxe.js';
+import { sendVersions } from '../sendVersions.js';
+import { loadSettings, saveSettings } from '../settings.js';
+import { sendTheme } from '../theme.js';
+import { watchDom } from '../watchDOM.js';
 
 /**
  * The website lives in an iframe and can
@@ -17,7 +18,9 @@ export const listenToChild = function (win) {
     const data = $event.message || $event.data;
     const actionsMap = {
       highlightTarget,
+      loadSettings,
       runAxe,
+      saveSettings,
       sendTheme,
       sendVersions,
       setColorStandard,
