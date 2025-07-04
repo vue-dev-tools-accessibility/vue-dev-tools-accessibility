@@ -2,7 +2,25 @@ import {
   CHILD_IFRAME_URL,
   ICON,
   PLUGIN_NAME
-} from './constants.js';
+} from '../constants.js';
+
+/**
+ * These are the names of the actions to be sent to the child.
+ *
+ * @type {Object}
+ */
+export const ALLOWED_ACTIONS = {
+  APCA_VERSION: 'apcaVersion',
+  AXE_LOADING: 'axeLoading',
+  AXE_VERSION: 'axeVersion',
+  // Axe errors
+  ERROR: 'error',
+  LOAD_SETTINGS: 'loadSettings',
+  THEME: 'theme',
+  VDTA_VERSION: 'vdtaVersion',
+  // Axe violations
+  VIOLATIONS: 'violations'
+};
 
 /**
  * Checks if the plugin's tab is selected in the
@@ -38,11 +56,18 @@ function isTabSelected (win) {
  * @param {object} data  An object where the key communicates the type of data being sent
  */
 export const sendToChild = function (win, data) {
-  if (isTabSelected(win)) {
-    const innerIframe = win.document?.querySelector('iframe[src="' + CHILD_IFRAME_URL + '"]');
-    const innerIframeWin = innerIframe?.contentWindow;
-    if (innerIframeWin) {
-      innerIframeWin.postMessage(data, CHILD_IFRAME_URL);
+  const action = Object.keys(data)[0];
+  const allowedActions = Object.values(ALLOWED_ACTIONS);
+  if (allowedActions.includes(action)) {
+    if (isTabSelected(win)) {
+      const selector = 'iframe[src="' + CHILD_IFRAME_URL + '"]';
+      const innerIframe = win.document?.querySelector(selector);
+      const innerIframeWin = innerIframe?.contentWindow;
+      if (innerIframeWin) {
+        innerIframeWin.postMessage(data, CHILD_IFRAME_URL);
+      }
     }
+  } else {
+    console.log('Action not allowed:', data);
   }
 };

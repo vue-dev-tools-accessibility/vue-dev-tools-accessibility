@@ -2,8 +2,14 @@
 import registerAPCACheck from 'apca-check';
 import axe from 'axe-core';
 
+import { ALLOWED_ACTIONS, sendToChild } from './communication/sendToChild.js';
 import { clearHighlights } from './highlighter.js';
-import { sendToChild } from './sendToChild.js';
+
+const {
+  AXE_LOADING,
+  ERROR,
+  VIOLATIONS
+} = ALLOWED_ACTIONS;
 
 /** @type {undefined|'bronze'|'silver'|'aaa'}  Color contrast checker */
 let colorStandard = undefined;
@@ -39,7 +45,7 @@ export const runAxe = function (win) {
     return;
   }
   axeRunning = true;
-  sendToChild(win, { axeLoading: axeRunning });
+  sendToChild(win, { [AXE_LOADING]: axeRunning });
   axe.reset();
 
   if (colorStandard === 'aaa') {
@@ -78,10 +84,10 @@ export const runAxe = function (win) {
   axe
     .run(window.document, options)
     .then(({ violations }) => {
-      sendToChild(win, { violations });
+      sendToChild(win, { [VIOLATIONS]: violations });
     })
     .catch((error) => {
-      sendToChild(win, { error });
+      sendToChild(win, { [ERROR]: error });
     })
     .finally(() => {
       clearHighlights();

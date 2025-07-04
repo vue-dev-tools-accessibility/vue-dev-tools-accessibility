@@ -3,7 +3,13 @@ import { version as axeVersion } from 'axe-core';
 
 import { version as vdtaVersion } from '../package.json' with { type: 'json' };
 
-import { sendToChild } from './sendToChild.js';
+import { ALLOWED_ACTIONS, sendToChild } from './communication/sendToChild.js';
+
+const {
+  APCA_VERSION,
+  AXE_VERSION,
+  VDTA_VERSION
+} = ALLOWED_ACTIONS;
 
 /**
  * Send the library and Axe version numbers to the child.
@@ -11,7 +17,7 @@ import { sendToChild } from './sendToChild.js';
  * @param {object} win  The DevTools iframe window object
  */
 export const sendVersions = function (win) {
-  sendToChild(win, { apcaVersion });
-  sendToChild(win, { axeVersion });
-  sendToChild(win, { vdtaVersion });
+  sendToChild(win, { [APCA_VERSION]: apcaVersion });
+  sendToChild(win, { [AXE_VERSION]: axeVersion });
+  sendToChild(win, { [VDTA_VERSION]: vdtaVersion });
 };

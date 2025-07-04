@@ -13,7 +13,7 @@
 import { onDevToolsClientConnected } from '@vue/devtools-api';
 
 import { addIframeTab } from './addIframeTab.js';
-import { listenToChild } from './listen.js';
+import { listenToChild } from './communication/listen.js';
 import { watchTheme } from './theme.js';
 import { initializeDOMWatching } from './watchDOM.js';
 

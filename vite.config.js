@@ -21,7 +21,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       cssCodeSplit: false,
-      entry: resolve(__dirname, 'src/runner.js'),
+      entry: resolve(__dirname, 'src/index.js'),
       name: 'vdta',
       formats: [
         'cjs',
