@@ -2,7 +2,8 @@ import { addCustomTab } from '@vue/devtools-api';
 
 import {
   CHILD_IFRAME_URL,
-  ICON
+  ICON,
+  PLUGIN_NAME
 } from './constants.js';
 
 /**
@@ -14,7 +15,7 @@ export const addIframeTab = function () {
    * A unique name used as an ID by the dev tools.
    * @type {String}
    */
-  const name = 'vue-accessibility';
+  const name = PLUGIN_NAME;
 
   /**
    * This is the tab title shown in the sidebar.

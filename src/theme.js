@@ -9,8 +9,27 @@ import { sendToChild } from './sendToChild.js';
  * @param {'light'|'dark'} currentTheme  Theme sent by the child iframe
  */
 export const sendTheme = function (win, currentTheme) {
-  const storageKey = '__vue-devtools-theme__';
-  const theme = window.localStorage.getItem(storageKey);
+  let theme;
+  // Prefer the localStorage value if available
+  try {
+    const storageKey = '__vue-devtools-theme__';
+    theme = window.localStorage.getItem(storageKey);
+  } catch {
+    // ignore
+  }
+
+  // but if not, check the class in the DOM, because it's their first
+  // time using Vue-Dev-Tools probably.
+  if (!theme || theme === 'auto') {
+    // Checks <html class="dark"> on the VDT parent iframe
+    if (win?.document?.documentElement?.classList?.contains('dark')) {
+      theme = 'dark';
+    } else {
+      theme = 'light';
+    }
+  }
+
+  // avoid unnecessary communication with child iframe
   if (theme !== currentTheme) {
     sendToChild(win, { theme });
   }

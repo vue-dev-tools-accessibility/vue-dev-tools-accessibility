@@ -29,3 +29,10 @@ export const CHILD_IFRAME_URL = childIframeUrl;
  * @type {String}
  */
 export const ICON = 'https://vue-dev-tools-accessibility.github.io/logo.svg';
+
+/**
+ * Name of the plugin used internally by Vue-Dev-Tools as an ID.
+ *
+ * @type {String}
+ */
+export const PLUGIN_NAME = 'vue-accessibility';
