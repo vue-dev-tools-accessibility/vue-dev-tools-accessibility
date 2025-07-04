@@ -18,6 +18,7 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     outDir,
+    sourcemap: true,
     lib: {
       cssCodeSplit: false,
       entry: resolve(__dirname, 'src/runner.js'),
@@ -25,8 +26,8 @@ export default defineConfig({
       formats: [
         'cjs',
         'es',
-        'iife',
-        'umd'
+        'umd',
+        'iife'
       ]
     }
   },

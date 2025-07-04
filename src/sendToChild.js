@@ -1,6 +1,7 @@
 import {
   CHILD_IFRAME_URL,
-  ICON
+  ICON,
+  PLUGIN_NAME
 } from './constants.js';
 
 /**
@@ -13,6 +14,16 @@ import {
  * @return {Boolean}      true = Accessibility tab is selected and iframe is loaded
  */
 function isTabSelected (win) {
+  let route;
+  try {
+    route = JSON.parse(localStorage.getItem('__VUE_DEVTOOLS_CLIENT_STATE__'))?.route;
+  } catch {
+    // ignore
+  }
+  if (route) {
+    return route === '/custom-tab-view/' + PLUGIN_NAME;
+  }
+  // Fallback to DOM check if localStorage does not work.
   let selectedTabIcon = win.document.querySelector('.router-link-active img');
   if (selectedTabIcon?.src === ICON) {
     return true;
@@ -28,8 +39,10 @@ function isTabSelected (win) {
  */
 export const sendToChild = function (win, data) {
   if (isTabSelected(win)) {
-    const innerIframe = win.document.querySelector('iframe[src="' + CHILD_IFRAME_URL + '"]');
-    const innerIframeWin = innerIframe.contentWindow;
-    innerIframeWin.postMessage(data, CHILD_IFRAME_URL);
+    const innerIframe = win.document?.querySelector('iframe[src="' + CHILD_IFRAME_URL + '"]');
+    const innerIframeWin = innerIframe?.contentWindow;
+    if (innerIframeWin) {
+      innerIframeWin.postMessage(data, CHILD_IFRAME_URL);
+    }
   }
 };
