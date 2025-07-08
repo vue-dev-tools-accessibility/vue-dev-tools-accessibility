@@ -60,7 +60,11 @@ export const highlightTarget = function (win, target) {
     'display: block',
     'width: ' + targetBox.width + 'px',
     'height: ' + targetBox.height + 'px',
-    'outline: 4px solid #F00'
+    'outline: 4px solid #F00',
+    // allow click-thru to items under the highlighter
+    'pointer-events: none',
+    // The bare minimum, hardly noticable
+    'z-index: 99999999999999999999999'
   ].join(';');
   targetElement.scrollIntoView({
     behavior: 'smooth',
