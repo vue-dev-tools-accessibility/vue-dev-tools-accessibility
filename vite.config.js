@@ -2,7 +2,8 @@ import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
-import { configDefaults } from 'vitest/dist/config.js';
+/* eslint-disable-next-line */
+import { configDefaults } from 'vitest/config';
 
 import { testingGroundsPath } from './scripts/postbuild-dev.js';
 
@@ -42,8 +43,8 @@ export default defineConfig({
       exclude: [
         ...(configDefaults?.coverage?.exclude || []),
         '.eslintrc.cjs',
-        './src/main.js',
-        '**/scripts/'
+        'package.json',
+        'scripts/'
       ],
       reportsDirectory: './tests/unit/coverage'
     },
