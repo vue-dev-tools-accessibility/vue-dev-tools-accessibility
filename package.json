@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -22,28 +22,28 @@
     "outdated": "npm outdated"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
-    "@stylistic/eslint-plugin": "^5.2.2",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vue/devtools-api": "^8.0.0",
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "@vitest/coverage-v8": "^4.0.10",
+    "@vue/devtools-api": "^8.0.5",
     "apca-check": "^0.1.1",
-    "axe-core": "^4.10.3",
-    "cross-env": "^10.0.0",
-    "eslint": "^9.32.0",
+    "axe-core": "^4.11.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
     "eslint-config-tjw-base": "^4.3.0",
     "eslint-config-tjw-import": "^2.0.0",
-    "eslint-config-tjw-jest": "^3.0.0",
+    "eslint-config-tjw-jest": "^3.0.1",
     "eslint-import-resolver-vite": "^2.1.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jest": "^29.0.1",
-    "globals": "^16.3.0",
-    "happy-dom": "^18.0.1",
+    "eslint-plugin-jest": "^29.1.0",
+    "globals": "^16.5.0",
+    "happy-dom": "^20.0.10",
     "lodash-es": "^4.17.21",
-    "vite": "^7.0.6",
-    "vitest": "^3.2.4"
+    "vite": "^7.2.2",
+    "vitest": "^4.0.10"
   },
   "volta": {
-    "node": "24.5.0",
-    "npm": "11.5.2"
+    "node": "25.2.1",
+    "npm": "11.6.2"
   }
 }
