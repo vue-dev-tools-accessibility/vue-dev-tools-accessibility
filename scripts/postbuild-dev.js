@@ -1,16 +1,9 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const __dirname = import.meta.dirname;
+import { testingGroundsPath } from './testingGroundsPath.js';
 
-export const testingGroundsPath = resolve(
-  __dirname,
-  '..',
-  '..',
-  'vite-vue3-pinia-options-api',
-  'node_modules',
-  'vue-dev-tools-accessibility'
-);
+const __dirname = import.meta.dirname;
 
 const copyFileToTestingGrounds = function (file) {
   try {

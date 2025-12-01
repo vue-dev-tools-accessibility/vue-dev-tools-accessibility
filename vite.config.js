@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 /* eslint-disable-next-line */
 import { configDefaults } from 'vitest/config';
 
-import { testingGroundsPath } from './scripts/postbuild-dev.js';
+import { testingGroundsPath } from './scripts/testingGroundsPath.js';
 
 const __dirname = import.meta.dirname;
 const isDev = process.env.VITE_A11Y === 'local';
