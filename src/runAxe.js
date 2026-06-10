@@ -56,7 +56,7 @@ export const runAxe = function (win) {
           id: 'color-contrast',
           enabled: true
         },
-        // Enable AAA contrast violations for colors with contrast ration between 4.5 and 7.0
+        // Enable AAA contrast violations for colors with contrast ratio between 4.5 and 7.0
         {
           id: 'color-contrast-enhanced',
           enabled: true
