@@ -43,8 +43,14 @@
     "vite": "^7.2.6",
     "vitest": "^4.0.14"
   },
-  "volta": {
-    "node": "25.2.1",
-    "npm": "11.6.4"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.4.0"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": "11.17.0"
+    }
   }
 }
