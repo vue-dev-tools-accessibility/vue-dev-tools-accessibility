@@ -1,8 +1,9 @@
 import { resolve } from 'node:path';
 import { fileURLToPath, URL } from 'node:url';
 
+/* eslint-disable-next-line import-x/no-unresolved */
 import { defineConfig } from 'vite';
-/* eslint-disable-next-line */
+/* eslint-disable-next-line import-x/extensions,import-x/no-unresolved */
 import { configDefaults } from 'vitest/config';
 
 import { testingGroundsPath } from './scripts/testingGroundsPath.js';
