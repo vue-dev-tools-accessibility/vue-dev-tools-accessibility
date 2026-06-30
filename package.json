@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -19,7 +19,7 @@
     "lint": "eslint --ext .js,.vue src tests vite.config.js eslint.config.js",
     "fix": "npm run lint -- --fix",
     "bump": "npx --yes -- @jsdevtools/version-bump-prompt && npm i",
-    "volta": "volta pin node@latest && volta pin npm@latest && git status",
+    "proto": "proto pin node latest --resolve --tool-native && proto pin npm latest --resolve --tool-native && git status",
     "outdated": "npm outdated"
   },
   "devDependencies": {
@@ -52,5 +52,9 @@
       "name": "npm",
       "version": "11.17.0"
     }
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "unrs-resolver@1.12.2": true
   }
 }
