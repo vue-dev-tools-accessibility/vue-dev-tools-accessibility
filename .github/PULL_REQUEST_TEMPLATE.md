@@ -1,5 +1,5 @@
 
 
 * [ ] `npm run bump`
-* [ ] `npm run volta`
+* [ ] `npm run proto`
 * [ ] `npm run outdated`
