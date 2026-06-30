@@ -44,7 +44,6 @@
     "vitest": "^4.1.9"
   },
   "allowScripts": {
-    "esbuild@0.28.1": true,
     "unrs-resolver@1.12.2": true
   },
   "devEngines": {
