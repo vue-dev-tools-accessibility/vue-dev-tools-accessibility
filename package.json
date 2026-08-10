@@ -43,6 +43,10 @@
     "vite": "^8.2.1",
     "vitest": "^4.1.9"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-dev-tools-accessibility/vue-dev-tools-accessibility.git"
+  },
   "allowScripts": {
     "unrs-resolver@1.12.2": true
   },
