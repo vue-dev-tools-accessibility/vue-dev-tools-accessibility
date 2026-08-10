@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-tools-accessibility",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -28,19 +28,19 @@
     "@vitest/coverage-v8": "^4.1.10",
     "@vue/devtools-api": "^8.2.1",
     "apca-check": "^0.1.1",
-    "axe-core": "^4.12.1",
+    "axe-core": "^4.13.0",
     "cross-env": "^10.1.0",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "eslint-config-tjw-base": "^5.0.0",
     "eslint-config-tjw-import-x": "^1.0.1",
     "eslint-config-tjw-jest": "^4.0.0",
     "eslint-import-resolver-vite": "^2.2.0",
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-jest": "^29.16.0",
-    "globals": "^17.8.0",
-    "happy-dom": "^20.11.1",
+    "globals": "^17.9.0",
+    "happy-dom": "^20.11.2",
     "lodash-es": "^4.18.1",
-    "vite": "^8.1.5",
+    "vite": "^8.2.1",
     "vitest": "^4.1.9"
   },
   "allowScripts": {
@@ -49,11 +49,11 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "26.4.0"
+      "version": "26.7.0"
     },
     "packageManager": {
       "name": "npm",
-      "version": "11.17.0"
+      "version": "12.0.2"
     }
   }
 }
