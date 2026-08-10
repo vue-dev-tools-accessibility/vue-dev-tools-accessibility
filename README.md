@@ -7,9 +7,10 @@
 
 * https://vue-dev-tools-accessibility.github.io
 
-<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="170" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
-<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="155" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
-<a href="https://vue-dev-tools-accessibility.github.io"><img alt="Arrow pointing up" height="141" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="⬆️" height="170" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="⬆️" height="155" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+<a href="https://vue-dev-tools-accessibility.github.io"><img alt="⬆️" height="141" src="https://github.com/user-attachments/assets/ebd5422f-8e69-487d-a05b-6d92ae900f53"></a>
+
 
 
 ## Running locally (plugin development)
