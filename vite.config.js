@@ -50,6 +50,7 @@ export default defineConfig({
       reportsDirectory: './tests/unit/coverage'
     },
     environment: 'happy-dom',
+    execArgv: ['--no-experimental-webstorage'],
     globals: true,
     root: '.',
     setupFiles: [

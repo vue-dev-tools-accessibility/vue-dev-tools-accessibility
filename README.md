@@ -14,7 +14,7 @@
 
 ## Running locally (plugin development)
 
-1. Install [Volta](https://volta.sh)
+1. Install [Proto](https://github.com/TheJaredWilcurt/blog/discussions/41)
 1. Clone this repo
 1. `npm i`
 1. This repo is just the logic and the tab in the Vite-Vue-DevTools. You'll also need to clone down the UI too and run it locally.
