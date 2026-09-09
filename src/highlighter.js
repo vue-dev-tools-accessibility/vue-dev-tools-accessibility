@@ -63,7 +63,7 @@ export const highlightTarget = function (win, target) {
     'outline: 4px solid #F00',
     // allow click-thru to items under the highlighter
     'pointer-events: none',
-    // The bare minimum, hardly noticable
+    // The bare minimum, hardly noticeable
     'z-index: 99999999999999999999999'
   ].join(';');
   targetElement.scrollIntoView({
